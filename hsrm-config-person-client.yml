@@ -1,0 +1,48 @@
+spring:
+  profiles:
+    active:
+    - dev
+---
+server:
+  port: 8082
+spring:
+  profiles: dev
+  application:
+    name: hsrm-config-person-client
+  datasource:
+    password: root
+    username: root
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml    # mybatic配置文件路径
+  mapper-locations: classpath:mybatis/mapper/*.xml         # mapper映射路径
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8000/eureka/
+
+---
+server:
+  port: 8082
+spring:
+  profiles: test
+  application:
+    name: hsrm-config-person-client
+  datasource:
+    password: root
+    username: root
+    url: jdbc:mysql://localhost:3306/hzero_platform?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml    # mybatic配置文件路径
+  mapper-locations: classpath:mybatis/mapper/*.xml         # mapper映射路径
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8000/eureka/
+
